@@ -52,9 +52,9 @@ function CustomInput({
         <input
           {...props}
           className={clsx(
-            "h-[3.75rem] w-full rounded-xl border bg-inputbg pt-2 pb-3 pl-4 text-black placeholder:text-base placeholder:text-gray-600",
+            "h-[3.75rem] w-full rounded-xl border bg-slate-50 pt-2 pb-3 pl-4 text-black placeholder:text-base placeholder:text-gray-600",
             type === "password" && "pr-12",
-            haserror ? "border-red-10" : "border-blue-50",
+            haserror ? "border-red-400" : "border-slate-100",
             type === "color" && "h-0 w-0 cursor-pointer p-0 opacity-0",
             className
           )}
@@ -93,6 +93,5 @@ function CustomInput({
   );
 }
 
-const InputMemo = React.memo(CustomInput);
 
-export default InputMemo;
+export default CustomInput;

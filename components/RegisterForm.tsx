@@ -5,11 +5,13 @@ import CustomButton from "./CustomButton";
 import Link from "next/link";
 
 const initialData = {
+  firstName: "",
+  lastName: "",
   email: "",
   password: "",
 };
 
-function LogInForm() {
+function RegisterForm() {
   const [inData, setInData] = useState(initialData);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,12 +27,29 @@ function LogInForm() {
     <form
       className="bg-white w-80 lg:w-[32rem] mx-auto p-2 lg:p-8 lg:py-20 rounded flex flex-col gap-y-3"
       onSubmit={submitHandler}
+      autoComplete="off"
     >
-      <h1 className="text-black text-center text-3xl font-bold">Login</h1>
+      <h1 className="text-black text-center text-3xl font-bold">Register</h1>
+      <CustomInput
+        name="firstName"
+        placeholder="First name"
+        type="text"
+        required
+        value={inData.firstName}
+        onChange={changeHandler}
+      />
+      <CustomInput
+        name="lastName"
+        placeholder="Last name"
+        type="text"
+        required
+        value={inData.lastName}
+        onChange={changeHandler}
+      />
       <CustomInput
         name="email"
         type="email"
-        placeholder="email"
+        placeholder="Email"
         required
         value={inData.email}
         onChange={changeHandler}
@@ -44,14 +63,14 @@ function LogInForm() {
         onChange={changeHandler}
       />
       <p className="text-gray-400 text-xs text-right">
-        No Account yet?{" "}
-        <Link href="/auth/register" className="hover:text-blue-600">
-          Register
+        Already have an account?{" "}
+        <Link href="/auth/login" className="hover:text-blue-600">
+          Login
         </Link>
       </p>
-      <CustomButton className="self-start">Login</CustomButton>
+      <CustomButton className="self-start">Register</CustomButton>
     </form>
   );
 }
 
-export default LogInForm;
+export default RegisterForm;
